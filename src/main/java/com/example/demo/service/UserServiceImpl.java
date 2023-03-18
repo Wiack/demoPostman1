@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 
@@ -34,7 +35,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser(Long id) {
-        return userRepository.findById(id).orElse(null);
+
+        //return userRepository.findById(id).orElse(null);
+
+        User user =null;
+        Optional<User> usr = userRepository.findById(id);
+        if (usr.isPresent()){
+            user = usr.get();
+        }
+        return user;
     }
 
     @Override
