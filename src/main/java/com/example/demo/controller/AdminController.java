@@ -23,12 +23,12 @@ public class AdminController {
     }
 
     @GetMapping("/{id}")
-    public User showUser(@PathVariable Long id) {
+    public User getUser(@PathVariable Long id) {
         return userService.getUser(id);
     }
 
-    @PostMapping("/save")
-    public User addUser(@RequestBody User user) {
+    @PostMapping
+    public User saveUser(@RequestBody User user) {
         userService.saveUser(user);
 
         return user;
@@ -40,7 +40,7 @@ public class AdminController {
         return "User udalen";
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping
     public User updateUser(@RequestBody User user) {
         //User user = userService.getUser(id);
         userService.updateUser(user);
